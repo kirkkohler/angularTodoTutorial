@@ -44,3 +44,20 @@ How a frontend application should request data from the API.
 | GET | /api/todos | Get all of the todos |
 | POST | /api/todos | Create a single todo | 
 | DELETE | /api/todos/:todo_id | Delete a single todo |
+
+## Angular
+---
+
+### core.js
+---
+Sets up angular module & controller which will call server API when user interacts with our Angular View.
+
+### index.html (view)
+---
+HTML to interact with Angular
+
+* Assign Angular module and controller
+* Initialize the page by getting all todos
+* Loop over the todos
+* Have a form to create todos
+* Delete todos when they are checked
