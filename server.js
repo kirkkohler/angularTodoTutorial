@@ -7,7 +7,10 @@ var mongoose = require('mongoose'); // mongoose for mongodb
 
 // configuration =================
 
-mongoose.connect('mongodb://node:node@mongo.onmodulus.net:27017/uwO3mypu'); // connect to mongoDB database on modulus.io
+// connect to mongoDB database on modulus.io
+mongoose.connect('mongodb://node:node@mongo.onmodulus.net:27017/uwO3mypu');
+// connect to local mongoDB
+// mongoose.connect('mongodb://node:node@TBD');
 
 app.configure(function() {
 	app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
@@ -23,7 +26,6 @@ var Todo = mongoose.model('Todo', {
 });
 
 // routes ======================================================================
-
 // api ---------------------------------------------------------------------
 // Internally call mongoose actions to find, create and remove objects
 
@@ -77,6 +79,13 @@ app.delete('/api/todos/:todo_id', function(req, res) {
 			res.json(todos);
 		});
 	});
+});
+
+// application -------------------------------------------------------------
+
+// load the single view file (angular will handle the page changes on the front-end)
+app.get('*', function(req, res) {
+	res.sendfile('./public/index.html');
 });
 
 // listen (start app with node server.js) ======================================
